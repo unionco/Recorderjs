@@ -1,6 +1,19 @@
 # Recorder.js
 
-## A plugin for recording/exporting the output of Web Audio API nodes
+## A module for recording/exporting the output of Web Audio API nodes
+
+##Installation
+
+Install with npm, consume with [browserify](https://github.com/substack/node-browserify).
+
+It uses [workerify](https://github.com/shama/workerify) to inline the WebWorker
+so things remain modular.
+
+
+```bash
+npm install recorderjs
+```
+
 
 ### Syntax
 #### Constructor
@@ -41,16 +54,16 @@ In addition, you may specify the type of Blob to be returned (defaults to 'audio
 
 This will pass the recorded stereo buffer (as an array of two Float32Arrays, for the separate left and right channels) to the callback. It can be played back by creating a new source buffer and setting these buffers as the separate channel data:
 
-	function getBufferCallback( buffers ) {
-		var newSource = audioContext.createBufferSource();
-		var newBuffer = audioContext.createBuffer( 2, buffers[0].length, audioContext.sampleRate );
-		newBuffer.getChannelData(0).set(buffers[0]);
-		newBuffer.getChannelData(1).set(buffers[1]);
-		newSource.buffer = newBuffer;
+  function getBufferCallback( buffers ) {
+    var newSource = audioContext.createBufferSource();
+    var newBuffer = audioContext.createBuffer( 2, buffers[0].length, audioContext.sampleRate );
+    newBuffer.getChannelData(0).set(buffers[0]);
+    newBuffer.getChannelData(1).set(buffers[1]);
+    newSource.buffer = newBuffer;
 
-		newSource.connect( audioContext.destination );
-		newSource.start(0);
-	}
+    newSource.connect( audioContext.destination );
+    newSource.start(0);
+  }
 
 This sample code will play back the stereo buffer.
 
