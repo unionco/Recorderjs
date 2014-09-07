@@ -1,6 +1,6 @@
 {
   "name": "recorderjs",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Record audio from a node in the Web Audio API",
   "main": "recorder.js",
   "scripts": {
