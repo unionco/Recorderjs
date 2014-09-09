@@ -24,8 +24,9 @@
     "url": "https://github.com/jergason/Recorderjs/issues"
   },
   "homepage": "https://github.com/jergason/Recorderjs",
-  "devDependencies": {
+  "peerDependencies": {
     "browserify": "^5.11.1",
     "workerify": "^0.3.0"
-  }
+  },
+  "dependencies": {}
 }
