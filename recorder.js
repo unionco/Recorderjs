@@ -8,6 +8,11 @@ var Recorder = function(source, cfg){
                this.context.createJavaScriptNode).call(this.context,
                                                        bufferLen, 2, 2);
   var worker = new Worker(WORKER_PATH);
+  worker.onmessage = function(e){
+    var blob = e.data;
+    currCallback(blob);
+  }
+
   worker.postMessage({
     command: 'init',
     config: {
@@ -61,11 +66,6 @@ var Recorder = function(source, cfg){
       command: 'exportWAV',
       type: type
     });
-  }
-
-  worker.onmessage = function(e){
-    var blob = e.data;
-    currCallback(blob);
   }
 
   source.connect(this.node);
