@@ -1,6 +1,6 @@
 {
-  "name": "recorderjs",
-  "version": "1.0.1",
+  "name": "@union/recorderjs",
+  "version": "1.0.2",
   "description": "Record audio from a node in the Web Audio API",
   "main": "recorder.js",
   "scripts": {
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jergason/Recorderjs.git"
+    "url": "https://github.com/unionco/Recorderjs.git"
   },
   "keywords": [
     "web-audio-api",
     "record",
     "browserify"
   ],
-  "author": "Jamison Dance <jergason@gmail.com> (http://jamisondance.com)",
+  "author": "UNION <dev@union.co> (http://union.co)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jergason/Recorderjs/issues"
+    "url": "https://github.com/unionco/Recorderjs/issues"
   },
-  "homepage": "https://github.com/jergason/Recorderjs",
+  "homepage": "https://github.com/unionco/Recorderjs",
   "peerDependencies": {
     "browserify": "^5.11.1",
     "workerify": "^0.3.0"
