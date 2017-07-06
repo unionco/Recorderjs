@@ -1,6 +1,6 @@
 {
   "name": "@union/recorderjs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Record audio from a node in the Web Audio API",
   "main": "recorder.js",
   "module": "recorder-es6.js",

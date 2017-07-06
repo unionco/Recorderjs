@@ -1,7 +1,8 @@
 importScripts('vendor/libmp3lame.js');
 
 var mp3codec,
-  recBuffers = [],
+  recBuffersL = [],
+  recBuffersR = [],
   recLength = 0;
 
 this.onmessage = function(e) {
@@ -43,16 +44,23 @@ function init(config) {
 }
 
 function record(buffer) {
-  var mp3data = Lame.encode_buffer_ieee_float(mp3codec, buffer[0], buffer[0]);
-  recBuffers.push(mp3data.data);
-  recLength += mp3data.data.length;
+  recBuffersL.push(buffer[0]);
+  recBuffersR.push(buffer[1]);
 }
 
 // Similar to the original exportWAV, it grabs the mp3 data from Lame encoder
 // object and build an mp3 blob with it.
 // When done, it posts the audio blob message to the worker.
 function exportAudio() {
-  var mp3data = Lame.encode_flush(mp3codec);
+  var recBuffers = [];
+  var mp3data;
+
+  for (var i = 0, l = recBuffersL.length; i < l; i++) {
+      mp3data = Lame.encode_buffer_ieee_float(mp3codec, recBuffersL[i], recBuffersR[i]);
+      recBuffers.push(mp3data.data);
+      recLength += mp3data.data.length;
+  }
+  mp3data = Lame.encode_flush(mp3codec);
 
   recBuffers.push(mp3data.data);
   recLength += mp3data.data.length;
