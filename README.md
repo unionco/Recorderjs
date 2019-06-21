@@ -1,5 +1,12 @@
 # Recorder.js
 
+---
+
+# [NOTE]
+# This README is current as of the original fork and has not been updated further
+
+---
+
 ## A module for recording/exporting the output of Web Audio API nodes
 
 ##Installation
